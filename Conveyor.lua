@@ -43,7 +43,7 @@ local function create(num_mechanisms)
                                 print("Mechanism "..i.." fail to process detail "..curr_detail.id.." because "..because)
                                 print("Conveyor paused")
                                 while true do
-                                    print("Restart mechanism "..i.."? Y/N")
+                                    io.write("Restart mechanism "..i.."? Y/N")
                                     local answer = io.read()
                                     if answer == "y" or answer == "Y" then
                                         mechanism.restart()

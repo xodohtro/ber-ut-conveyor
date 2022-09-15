@@ -16,15 +16,15 @@ while true do
         if assign_answer == "y" or assign_answer == "Y" then
             io.write("Input number of details: ")
             num_details = io.read('*number')
-            if num_details == nil  or num_details < 0 then
-                io.stderr:write("ERROR: Must contain only a number.")
+            if num_details == nil  or num_details <= 0 then
+                io.stderr:write("ERROR: Must contain only a  positive number!")
                 os.exit()
             end
 
             io.write("Input number of mechanisms: ")
             num_mechanisms = io.read('*number')
-            if num_mechanisms == nil  or num_mechanisms < 0 then
-                io.stderr:write("ERROR: Must contain only a number!")
+            if num_mechanisms == nil  or num_mechanisms <= 0 then
+                io.stderr:write("ERROR: Must contain only a  positive number!")
                 os.exit()
             end
             answer = nil
