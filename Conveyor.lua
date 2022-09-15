@@ -53,7 +53,7 @@ local function create(num_mechanisms)
                                         print("Conveyor stopped")
                                         os.exit()
                                     else
-                                        print("Wrong answer; try again")
+                                        io.stderr:write("Wrong answer; try again")
                                     end
                                 end
                             else

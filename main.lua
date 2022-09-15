@@ -8,23 +8,23 @@ local num_mechanisms = 4
 
 
 while true do
-    io.write('Start the conveyor (y/n) ?')
+    print('Start the conveyor? (Y/N)')
     local answer = io.read()
     if answer == "y" or answer == "Y" then
-        io.write("Assign new values to details and mechanisms (y/n) ?")
+        print("Assign new values to details and mechanisms? (Y/N)")
         local assign_answer = io.read()
         if assign_answer == "y" or assign_answer == "Y" then
             io.write("Input number of details: ")
             num_details = io.read('*number')
             if num_details == nil  or num_details <= 0 then
-                io.stderr:write("ERROR: Must contain only a  positive number!")
+                io.stderr:write("ERROR: Must contain only a positive number!")
                 os.exit()
             end
 
             io.write("Input number of mechanisms: ")
             num_mechanisms = io.read('*number')
             if num_mechanisms == nil  or num_mechanisms <= 0 then
-                io.stderr:write("ERROR: Must contain only a  positive number!")
+                io.stderr:write("ERROR: Must contain only a positive number!")
                 os.exit()
             end
             answer = nil
@@ -36,7 +36,7 @@ while true do
     elseif answer == "n" or answer == "N" then
         os.exit()
     else
-        print("Wrong answer; try again")
+        io.stderr:write("Wrong answer; try again")
     end
 end
 
