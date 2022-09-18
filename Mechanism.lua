@@ -1,30 +1,30 @@
-local Status = require("Status")
+local OperationStatus = require("OperationStatus")
 
-local function wait(time_work)
-    local time_end = tonumber(os.clock() + time_work);
-    repeat coroutine.yield() until os.clock() >= time_end
+local function working(work_time)
+    local working_end_time = tonumber(os.clock() + work_time);
+    repeat coroutine.yield() until os.clock() >= working_end_time
 end
 
-local function create(pos, time_expect)
+local function create_mechanism(pos, expect_time)
 
     local Mechanism = {
         pos = pos,
-        time_expect = time_expect
+        expect_time = expect_time
     }
 
     Mechanism.restart = function()
         Mechanism.process = coroutine.create(function(detail)
-            local time_work = math.random(1, 5)
+            local work_time = math.random(1, 5)
             print("Mechanism "..Mechanism.pos..": START process detail "..detail.id)
-            wait(time_work)
-            local result
+            working(work_time)
+            local status
             if math.random(1, 10) == 5 then
-                result = Status.FAIL
+                status = OperationStatus.FAIL
             else
-                result = Status.OK
-                print("Mechanism "..Mechanism.pos..": END process detail "..detail.id.."; work for "..time_work.." sec")
+                status = OperationStatus.OK
+                print("Mechanism "..Mechanism.pos..": END process detail "..detail.id.."; work for "..work_time.." sec")
             end
-            return result, time_work
+            return status, work_time
         end)
     end
 
@@ -44,6 +44,6 @@ local function create(pos, time_expect)
 end
 
 return {
-    create = create
+    create_mechanism = create_mechanism
 }
 

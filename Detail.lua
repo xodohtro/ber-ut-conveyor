@@ -1,9 +1,9 @@
-local function create(id)
+local function create_detail(id)
     return {
         id = id
     }
 end
 
 return {
-    create = create
+    create_detail = create_detail
 }
